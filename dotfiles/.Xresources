@@ -1,19 +1,24 @@
-#define c00 #646464
-#define c01 #F58E8E
-#define c02 #A9D3AB
-#define c03 #FED37E
-#define c04 #7AABD4
-#define c05 #D6ADD5
-#define c06 #79D4D5
-#define c07 #D4D4D4
-#define c08 #646464
-#define c09 #F58E8E
-#define c10 #A9D3AB
-#define c11 #FED37E
-#define c12 #7AABD4
-#define c13 #D6ADD5
-#define c14 #79D4D5
-#define c15 #D4D4D4
+Xcursor.theme: Vimix-cursors
+Xcursor.size: 16
+
+#define c00 #191919
+#define c01 #e86363
+#define c02 #95c997
+#define c03 #d1cf87
+#define c04 #6593d8
+#define c05 #b068b2
+#define c06 #72bebf
+#define c07 #d8d8d8
+#define c08 #7a7a7a
+#define c09 #ff7575
+#define c10 #94db97
+#define c11 #eae88c
+#define c12 #488cf2
+#define c13 #d36bd6
+#define c14 #6eced1
+#define c15 #cccccc
+#define cbg #4c4c4c
+#define cfg #f79191
 
 *.color0:       c00
 *.color1:       c01
@@ -31,11 +36,8 @@
 *.color13:      c13
 *.color14:      c14
 *.color15:      c15
-*background:    c00
-*foreground:    c01
-
-Xcursor.theme: Vimix-cursors
-Xcursor.size: 16
+*background:    cbg
+*foreground:    cfg
 
 xterm*color0:       c00
 xterm*color1:       c01
@@ -57,3 +59,7 @@ xterm*color15:      c15
 UXTerm*renderFont: true
 UXTerm*faceName: /usr/share/fonts/nerd-fonts-complete/OTF/"Fura Code Regular Nerd Font Complete Mono.otf"
 UXTerm*faceSize: 12
+
+
+
+###yellowhighlight+redhighlight=#e87e6b
