@@ -1,0 +1,202 @@
+[settings]
+throttle-ms = 50
+throttle-limit = 5
+
+[global]
+active = ${xrdb:color3}
+background = ${xrdb:color0}
+foreground = ${xrdb:color2}
+urgent = ${xrdb:color1}
+secondary = ${xrdb:color7}
+underline = ${xrdb:color6}
+font-0 = Lekton Nerd Font:style=Regular:size=13;3
+font-1 = Fura:pixelsize=10
+font-2 = NotoEmoji Nerd Font:style=Book
+;padding = 2
+
+########
+##BARS##
+########
+
+[bar/top_left]
+inherit = global
+font-0 = Lekton Nerd Font:style=Regular:size=12;3
+height = 2%
+width = 22%
+offset-y = .5%
+offset-x = .25%
+override-redirect = true
+modules-left = menu_main
+
+[bar/top_center]
+inherit = global
+width = 42%
+height = 2%
+offset-y = .5%
+offset-x = 29%
+tray-position = center
+tray-detached = false
+tray-padding = 4
+override-redirect = true
+fixed-center = true
+modules-center = i3 pulseaudio
+module-margin = 15
+
+[bar/top_right]
+inherit = global
+height = 2%
+width = 13.5%
+offset-y = .5%
+offset-x = 86.25%
+override-redirect = true
+modules-right = directory
+
+[bar/bottom_left]
+inherit = global
+bottom = true
+height = 2%
+width = 23.75%
+offset-y = .25%
+offset-x = .25%
+override-redirect = true
+foreground = ${colors.secondary}
+modules-center = memory filesystem services_running cpu cputemp
+module-margin = 1
+
+[bar/bottom_center]
+inherit = global
+height = 2%
+width = 6%
+foreground = ${colors.secondary}
+fixed-center = true
+modules-center = date
+bottom = true
+offset-y = .25%
+offset-x = 47.5%
+override-redirect = true
+
+[bar/bottom_right]
+inherit = global
+height = 2%
+width = 10%
+bottom = true
+offset-y = .25%
+offset-x = 89.75%
+override-redirect = true
+foreground = ${colors.secondary}
+modules-right = 
+
+###########
+##MODULES##
+###########
+
+[module/date]
+type = internal/date
+date = %m-%d%
+time = %H:%M
+interval = 2.0
+label = %date% %time%
+
+[module/i3]
+type = internal/i3
+reverse-scroll = false
+label-focused-background = ${colors.secondary}
+scroll-up = "#i3.prev"
+scroll-down = "#i3.next"
+
+[module/pulseaudio]
+type = internal/pulseaudio
+interval = 5
+format-volume = <ramp-volume>  <label-volume>
+label-muted = 婢 %percentage%
+label-muted-foreground = #666
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+click-right = pavucontrolpowermenu
+;click-left = mute
+
+[module/memory]
+type = internal/memory
+interval = 3
+format = <label>
+label = 拾 %percentage_used%%
+
+[module/cpu]
+type = internal/cpu
+interval = 3
+format = <label>
+label = 礪 %percentage-sum%%
+
+[module/filesystem]
+type = internal/fs
+mount-0 = /
+interval = 30
+label-mounted = 力 %percentage_used%%
+
+[module/cputemp]
+type = internal/temperature
+interval = 3
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp1_input
+warn-temperature = 66
+format = <label>
+format-warn = <label-warn>
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = #f00
+
+[module/services_running]
+type = custom/script
+exec = systemctl --type=service --state=running list-units | grep running | wc -l
+tail = true
+interval = 12
+format = <label>
+label = 囹 %output%
+
+#########
+##MENUS##
+#########
+
+[module/menu_main]
+type = custom/menu
+expand-right = true
+label-open = "寮  "
+;label-open-foreground = #ECEFF4
+label-close = "僚"
+;label-close-foreground = #EBCB8B
+label-separator = " | "
+;label-separator-foreground = #A3BE8C
+menu-0-0 = "襤"
+menu-0-0-exec = menu-open-1
+menu-0-1 = "惘"
+menu-0-1-exec = menu-open-2
+menu-0-2 = "異 "
+menu-0-2-exec = menu-open-3
+menu-1-0 = "Power"
+menu-1-0-exec = "shutdown now"
+menu-1-1 = "Reboot"
+menu-1-1-exec = reboot
+menu-1-2 = "Logout"
+menu-1-2-exec = i3-msg exit
+menu-2-0 = ".config"
+menu-2-0-exec = pcmanfm ~/.config
+menu-2-1 = "notes"
+menu-2-1-exec = pcmanfm ~/notes
+menu-2-2 = "skkrt"
+menu-2-2-exec = pcmanfm ~/skkrt
+menu-2-3 = "root"
+menu-2-3-exec = pcmanfm /
+menu-2-4 = "mnt"
+menu-2-4-exec = pcmanfm /mnt
+menu-2-5 = "etc"
+menu-2-5-exec = pcmanfm /etc
+menu-2-6 = "usr"
+menu-2-6-exec = pcmanfm /usr
+menu-3-0 = "凜 VSCodium"
+menu-3-0-exec = vscodium
+menu-3-1 = "嗢 VLC"
+menu-3-1-exec = vlc
+menu-3-2 = "爵 Firefox"
+menu-3-2-exec = firefox
+menu-3-3 = "﨧 Discord"
+menu-3-3-exec = discord

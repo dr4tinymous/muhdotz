@@ -1,0 +1,59 @@
+#define c00 #646464
+#define c01 #F58E8E
+#define c02 #A9D3AB
+#define c03 #FED37E
+#define c04 #7AABD4
+#define c05 #D6ADD5
+#define c06 #79D4D5
+#define c07 #D4D4D4
+#define c08 #646464
+#define c09 #F58E8E
+#define c10 #A9D3AB
+#define c11 #FED37E
+#define c12 #7AABD4
+#define c13 #D6ADD5
+#define c14 #79D4D5
+#define c15 #D4D4D4
+
+*.color0:       c00
+*.color1:       c01
+*.color2:       c02
+*.color3:       c03
+*.color4:       c04
+*.color5:       c05
+*.color6:       c06
+*.color7:       c07
+*.color8:       c08
+*.color9:       c09
+*.color10:      c10
+*.color11:      c11
+*.color12:      c12
+*.color13:      c13
+*.color14:      c14
+*.color15:      c15
+*background:    c00
+*foreground:    c01
+
+Xcursor.theme: Vimix-cursors
+Xcursor.size: 16
+
+xterm*color0:       c00
+xterm*color1:       c01
+xterm*color2:       c02
+xterm*color3:       c03
+xterm*color4:       c04
+xterm*color5:       c05
+xterm*color6:       c06
+xterm*color7:       c07
+xterm*color8:       c08
+xterm*color9:       c09
+xterm*color10:      c10
+xterm*color11:      c11
+xterm*color12:      c12
+xterm*color13:      c13
+xterm*color14:      c14
+xterm*color15:      c15
+
+UXTerm*renderFont: true
+UXTerm*faceName: /usr/share/fonts/nerd-fonts-complete/OTF/"Fura Code Regular Nerd Font Complete Mono.otf"
+UXTerm*faceSize: 12
