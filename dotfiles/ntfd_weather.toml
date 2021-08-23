@@ -1,8 +1,8 @@
 [openweathermap]
 enabled = true
-# api_key = "file:~/your_folder/some-key.txt"
+api_key = "/home/drat/.config/ntfd/apikey.txt"
 # api_key = "env:OWM_API_KEY"                   # Read from an environment variable
-api_key = "a714c68c72352ab0ba48e4e7cbdfbf13"
+# api_key = "--------------------------"
 # Find your city at https://openweathermap.org the id will be the last part of the URL
 city_id = "7506758"
 # How long weather notifications should stay up (in seconds)
