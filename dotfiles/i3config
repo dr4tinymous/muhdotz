@@ -159,3 +159,5 @@ bindsym $mod+p exec --no-startup-id /home/drat/.config/scripts/lock
 exec --no-startup-id i3-msg 'workspace 3; exec --no-startup-id thunderbird; exec --no-startup-id discord'
 exec_always --no-startup-id /home/drat/.config/polybar/launchpoly.sh
 exec_always --no-startup-id picom
+exec_always --no-startup-id feh --bg-center /home/drat/Pictures/wallpaper/chalkbg.jpg
+exec_always --no-startup-id ntfd

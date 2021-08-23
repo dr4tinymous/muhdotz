@@ -4,7 +4,6 @@ throttle-limit = 5
 
 [global]
 active = ${xrdb:color3}
-;background = ${xrdb:background}
 background = #00000000
 foreground = ${xrdb:foreground}
 urgent = ${xrdb:color4}
@@ -12,20 +11,25 @@ secondary = ${xrdb:color6}
 underline = ${xrdb:color5}
 font-0 = Lekton Nerd Font:style=Regular:size=13;3
 font-1 = Fura:pixelsize=10
-font-2 = NotoEmoji Nerd Font:style=Book
+
+
 override-redirect = true
 padding = 1
 
-########
-##BARS##
-########
+ ##########
+####BARS####
+ ##########
 
 [bar/top_left]
+font-0 = WeatherIcons:size=16;2
+font-1 = MaterialIcons:size=19;4
+font-2 = Fura:pixelsize=10
 inherit = global
 height = 2%
 width = 22%
 offset-y = .5%
 offset-x = .25%
+modules-left = weather
 
 [bar/top_center]
 inherit = global
@@ -60,15 +64,15 @@ module-margin = 1
 [bar/bottom_center]
 inherit = global
 height = 2%
-width = 6%
+width = 16%
 fixed-center = true
 modules-center = date
 bottom = true
 offset-y = .25%
 offset-x = 17.25%
 
-
 [bar/bottom_right]
+font-0 = NotoEmoji Nerd Font:style=Book
 inherit = global
 height = 2%
 width = 24%
@@ -77,9 +81,9 @@ offset-y = .25%
 offset-x = 75.75%
 modules-center = bookmarks
 
-###########
-##MODULES##
-###########
+ ############
+####MODULES###
+ ############
 
 [module/date]
 type = internal/date
@@ -151,60 +155,22 @@ interval = 12
 format = <label>
 label = 囹 %output%
 
-#########
-##MENUS##
-#########
+[module/weather]
+type = custom/script
+exec = busctl --user -j get-property io.ntfd /weather openweathermap.strings RenderedTemplate | jq -r .data
+interval = 60
+label-font = 3
 
-;[module/menu_main]
-;type = custom/menu
-;expand-right = true
-;label-open = "寮  "
-;label-open-foreground = #ECEFF4
-;label-close = "僚"
-;label-close-foreground = #EBCB8B
-;label-separator = " | "
-;label-separator-foreground = #A3BE8C
-;menu-0-0 = "襤"
-;menu-0-0-exec = menu-open-1
-;menu-0-1 = "惘"
-;menu-0-1-exec = menu-open-2
-;menu-0-2 = "異 "
-;menu-0-2-exec = menu-open-3
-;menu-1-0 = "Power"
-;menu-1-0-exec = "shutdown now"
-;menu-1-1 = "Reboot"
-;menu-1-1-exec = reboot
-;menu-1-2 = "Logout"
-;menu-1-2-exec = i3-msg exit
-;menu-2-0 = ".config"
-;menu-2-0-exec = pcmanfm ~/.config
-;menu-2-1 = "notes"
-;menu-2-1-exec = pcmanfm ~/notes
-;menu-2-2 = "skkrt"
-;menu-2-2-exec = pcmanfm ~/skkrt
-;menu-2-3 = "root"
-;menu-2-3-exec = pcmanfm /
-;menu-2-4 = "mnt"
-;menu-2-4-exec = pcmanfm /mnt
-;menu-2-5 = "etc"
-;menu-2-5-exec = pcmanfm /etc
-;menu-2-6 = "usr"
-;menu-2-6-exec = pcmanfm /usr
-;menu-3-0 = "凜 VSCodium"
-;menu-3-0-exec = vscodium
-;menu-3-1 = "嗢 VLC"
-;menu-3-1-exec = vlc
-;menu-3-2 = "爵 Firefox"
-;menu-3-2-exec = firefox
-;menu-3-3 = "﨧 Discord"
-;menu-3-3-exec = discord
+ ###########
+####MENUS####
+ ###########
 
 [module/bookmarks]
 type = custom/menu
 expand-right = false
 label-open = " 📑 "
 label-close = " 📖 "
-label-separator = " 雷 "
+label-separator = " | "
 menu-0-0 = "DIR"
 menu-0-0-exec = menu-open-1
 menu-0-1 = "WEB"
@@ -216,61 +182,70 @@ menu-0-3-exec = menu-open-4
 
 menu-1-0 = "↖"
 menu-1-0-exec = menu-open-0
-menu-1-1 = "notes"
-menu-1-1-exec = pcmanfm ~/notes
-menu-1-2 = "root"
+menu-1-1 = "NOTES"
+menu-1-1-exec = menu-open-8
+menu-1-2 = "ROOT"
 menu-1-2-exec = pcmanfm /
-menu-1-3 = "etc"
+menu-1-3 = "ETC"
 menu-1-3-exec = pcmanfm /etc
-menu-1-4 = "usr"
+menu-1-4 = "USR"
 menu-1-4-exec = pcmanfm /usr
-menu-1-5 = ".config"
+menu-1-5 = ".CONFIG"
 menu-1-5-exec = pcmanfm ~/.config
 
 menu-2-0 = "↖"
 menu-2-0-exec = menu-open-0
-menu-2-1 = "notes"
-menu-2-1-exec = pcmanfm ~/notes
-menu-2-2 = "root"
-menu-2-2-exec = pcmanfm /
-menu-2-3 = "etc"
-menu-2-3-exec = pcmanfm /etc
-menu-2-4 = "usr"
-menu-2-4-exec = pcmanfm /usr
-menu-2-5 = "tools"
-menu-2-5-exec = menu-open-5
+menu-2-1 = "TOOL"
+menu-2-1-exec = menu-open-5
+menu-2-2 = "CSE"
+menu-2-2-exec = menu-open-6
+menu-2-3 = "PRO"
+menu-2-3-exec = menu-open-7
 
 menu-3-0 = "↖"
 menu-3-0-exec = menu-open-0
-menu-3-1 = "嗢 VLC"
+menu-3-1 = "VLC"
 menu-3-1-exec = vlc
-menu-3-2 = "爵 Firefox"
+menu-3-2 = "FIREFOX"
 menu-3-2-exec = firefox
-menu-3-3 = "﨧 Discord"
+menu-3-3 = "DISC"
 menu-3-3-exec = discord
-menu-3-4 = "凜 VSCodium"
+menu-3-4 = "VSCODE"
 menu-3-4-exec = vscodium
 
 menu-4-0 = "↖"
 menu-4-0-exec = menu-open-0
-menu-4-1 = ".backup"
+menu-4-1 = ".BACK"
 menu-4-1-exec = /home/drat/skkrt/muhdotz.sh
-menu-4-2 = "sysback"
+menu-4-2 = "SYSBACK"
 menu-4-2-exec = /home/drat/skkrt/backup.sh
-menu-4-3 = "﨧 Discord"
-menu-4-3-exec = discord
-menu-4-4 = "凜 VSCodium"
-menu-4-4-exec = vscodium
-
 
 menu-5-0 = "↖"
 menu-5-0-exec = menu-open-2
-menu-5-1 = "sharefile"
+menu-5-1 = "SHRFILE"
 menu-5-1-exec = firefox https://anonymfiles.com/
-menu-5-2 = "sharevid"
+menu-5-2 = "SHVID"
 menu-5-2-exec = firefox https://sendvid.com/
-menu-5-3 = "recipe"
+menu-5-3 = "RECIP"
 menu-5-3-exec = firefox https://based.cooking/
-menu-5-4 = "ingred"
+menu-5-4 = "INGRED"
 menu-5-4-exec = firefox http://www.recipepuppy.com/
 
+menu-6-0 = "↖"
+menu-6-0-exec = menu-open-2
+menu-6-1 = "ARCH"
+menu-6-1-exec = firefox https://cse.google.com/cse?cx=f28da8212fb00f3bb#gsc.tab=0
+menu-6-2 = "TOR"
+menu-6-2-exec = firefox https://cse.google.com/cse?cx=9d103921ba94f54f1
+
+menu-7-0 = "↖"
+menu-7-0-exec = menu-open-2
+menu-7-1 = "ROV"
+menu-7-1-exec = firefox https://www.rover.com/account/inbox/
+
+menu-8-0 = "↖"
+menu-8-0-exec = menu-open-1
+menu-8-1 = "PF"
+menu-8-1-exec = /home/drat/notes/dratopsy_pf
+menu-8-2 = "GROC"
+menu-8-2-exec = /home/drat/notes/grocery
