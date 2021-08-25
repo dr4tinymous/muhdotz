@@ -3,14 +3,15 @@ throttle-ms = 50
 throttle-limit = 5
 
 [global]
-active = ${xrdb:color3}
+active = ${xrdb:color2}
 background = #00000000
-foreground = ${xrdb:foreground}
+foreground = ${xrdb:color3}
 urgent = ${xrdb:color4}
 secondary = ${xrdb:color6}
 underline = ${xrdb:color5}
 font-0 = Lekton Nerd Font:style=Regular:size=13;3
-font-1 = Fura:pixelsize=10
+font-1 = WeatherIcons:size=16;2
+font-2 = MaterialIcons:size=19;4
 override-redirect = true
 padding = 1
 
@@ -19,9 +20,6 @@ padding = 1
  ##########
 
 [bar/top_left]
-font-0 = WeatherIcons:size=16;2
-font-1 = MaterialIcons:size=19;4
-font-2 = Fura:pixelsize=10
 inherit = global
 height = 2%
 width = 22%
@@ -45,9 +43,10 @@ modules-right = pulseaudio
 [bar/top_right]
 inherit = global
 height = 2%
-width = 13.5%
+width = 24%
 offset-y = .5%
-offset-x = 86.25%
+offset-x = 75.75%
+modules-right = news
 
 [bar/bottom_left]
 inherit = global
@@ -62,7 +61,7 @@ module-margin = 1
 [bar/bottom_center]
 inherit = global
 height = 2%
-width = 16%
+width = 8%
 fixed-center = true
 modules-center = date
 bottom = true
@@ -70,7 +69,6 @@ offset-y = .25%
 offset-x = 17.25%
 
 [bar/bottom_right]
-font-0 = NotoEmoji Nerd Font:style=Book
 inherit = global
 height = 2%
 width = 28%
@@ -96,7 +94,6 @@ reverse-scroll = true
 wrapping-scroll = false
 scroll-up = "#i3.prev"
 scroll-down = "#i3.next"
-
 format = <label-state>
 label-focused = %index%
 label-focused-padding = 1.5
@@ -114,7 +111,6 @@ ramp-volume-0 = 奄
 ramp-volume-1 = 奔
 ramp-volume-2 = 墳
 click-right = pavucontrolpowermenu
-;click-left = mute
 
 [module/memory]
 type = internal/memory
@@ -157,7 +153,10 @@ label = 囹 %output%
 type = custom/script
 exec = busctl --user -j get-property io.ntfd /weather openweathermap.strings RenderedTemplate | jq -r .data
 interval = 60
-label-font = 3
+label-font = 2
+
+[module/news]
+include-file = ~/.config/polybar/scripts/news/module.conf
 
  ###########
 ####MENUS####
@@ -166,8 +165,8 @@ label-font = 3
 [module/bookmarks]
 type = custom/menu
 expand-right = false
-label-open = " 📑 "
-label-close = " 📖 "
+label-open = " 齃 "
+label-close = " 龎 "
 label-separator = " | "
 menu-0-0 = "DIR"
 menu-0-0-exec = menu-open-1
@@ -177,8 +176,7 @@ menu-0-2 = "APP"
 menu-0-2-exec = menu-open-3
 menu-0-3 = ".SH"
 menu-0-3-exec = menu-open-4
-
-menu-1-0 = "↖"
+menu-1-0 = "«"
 menu-1-0-exec = menu-open-0
 menu-1-1 = "NOTES"
 menu-1-1-exec = menu-open-8
@@ -190,8 +188,7 @@ menu-1-4 = "USR"
 menu-1-4-exec = pcmanfm /usr
 menu-1-5 = ".CONFIG"
 menu-1-5-exec = pcmanfm ~/.config
-
-menu-2-0 = "↖"
+menu-2-0 = "«"
 menu-2-0-exec = menu-open-0
 menu-2-1 = "TOOL"
 menu-2-1-exec = menu-open-5
@@ -199,8 +196,7 @@ menu-2-2 = "CSE"
 menu-2-2-exec = menu-open-6
 menu-2-3 = "PRO"
 menu-2-3-exec = menu-open-7
-
-menu-3-0 = "↖"
+menu-3-0 = "«"
 menu-3-0-exec = menu-open-0
 menu-3-1 = "VLC"
 menu-3-1-exec = vlc
@@ -210,15 +206,13 @@ menu-3-3 = "DISC"
 menu-3-3-exec = discord
 menu-3-4 = "VSCODE"
 menu-3-4-exec = vscodium
-
-menu-4-0 = "↖"
+menu-4-0 = "«"
 menu-4-0-exec = menu-open-0
 menu-4-1 = ".BACK"
 menu-4-1-exec = /home/drat/skkrt/muhdotz.sh
 menu-4-2 = "SYSBACK"
 menu-4-2-exec = /home/drat/skkrt/backup.sh
-
-menu-5-0 = "↖"
+menu-5-0 = "«"
 menu-5-0-exec = menu-open-2
 menu-5-1 = "SHRFILE"
 menu-5-1-exec = firefox https://anonymfiles.com/
@@ -228,22 +222,21 @@ menu-5-3 = "RECIP"
 menu-5-3-exec = firefox https://based.cooking/
 menu-5-4 = "INGRED"
 menu-5-4-exec = firefox http://www.recipepuppy.com/
-
-menu-6-0 = "↖"
+menu-6-0 = "«"
 menu-6-0-exec = menu-open-2
 menu-6-1 = "ARCH"
 menu-6-1-exec = firefox https://cse.google.com/cse?cx=f28da8212fb00f3bb#gsc.tab=0
 menu-6-2 = "TOR"
 menu-6-2-exec = firefox https://cse.google.com/cse?cx=9d103921ba94f54f1
-
-menu-7-0 = "↖"
+menu-7-0 = "«"
 menu-7-0-exec = menu-open-2
 menu-7-1 = "ROV"
 menu-7-1-exec = firefox https://www.rover.com/account/inbox/
-
-menu-8-0 = "↖"
+menu-8-0 = "«"
 menu-8-0-exec = menu-open-1
 menu-8-1 = "PF"
 menu-8-1-exec = /home/drat/notes/dratopsy_pf
 menu-8-2 = "GROC"
 menu-8-2-exec = /home/drat/notes/grocery
+
+

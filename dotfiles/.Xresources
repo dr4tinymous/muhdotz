@@ -1,5 +1,5 @@
 Xcursor.theme: Vimix-cursors
-Xcursor.size: 16
+Xcursor.size: 18
 
 #define c00 #191919
 #define c01 #e86363
@@ -39,27 +39,12 @@ Xcursor.size: 16
 *background:    cbg
 *foreground:    cfg
 
-xterm*color0:       c00
-xterm*color1:       c01
-xterm*color2:       c02
-xterm*color3:       c03
-xterm*color4:       c04
-xterm*color5:       c05
-xterm*color6:       c06
-xterm*color7:       c07
-xterm*color8:       c08
-xterm*color9:       c09
-xterm*color10:      c10
-xterm*color11:      c11
-xterm*color12:      c12
-xterm*color13:      c13
-xterm*color14:      c14
-xterm*color15:      c15
+xterm*faceName: xft:Lekton Nerd Font:style=Regular
+URxvt*scrollBar: false
+URxvt*font:  xft:Lekton Nerd Font:style=Regular:size=12
+URxvt*boldFont: xft:Lekton Nerd Font:style=Bold:size=12
+URxvt*italicFont:  xft:Lekton Nerd Font:style=Italic:size=12
 
-UXTerm*renderFont: true
-UXTerm*faceName: /usr/share/fonts/nerd-fonts-complete/OTF/"Fura Code Regular Nerd Font Complete Mono.otf"
-UXTerm*faceSize: 12
-
-
-
-###yellowhighlight+redhighlight=#e87e6b
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.dpi: 96
